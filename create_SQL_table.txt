@@ -31,4 +31,7 @@ FOREIGN KEY (restaurant_id) REFERENCES Restaurants(restaurant_id)
 );
 
 
-INSERT INTO Restaurants VALUES ('得正#基隆海大計劃', '202基隆市中正區祥豐街855號', '0224621016', '飲料', NULL, '01.jpg');
+INSERT INTO Restaurants VALUES (NULL, '得正#基隆海大計劃', '202基隆市中正區祥豐街855號', '0224621016', '飲料', NULL, '得正.jpg');
+INSERT INTO Restaurants VALUES (NULL, '飯丸屋-基隆海大店', '202基隆市中正區北寧路17號1樓', '0979335851', '速食', NULL, '飯丸屋.jpg');
+INSERT INTO Restaurants VALUES (NULL, '隆香茶室 LOONG HEONG (公休請留意IG)', '202基隆市中正區北寧路3號', NULL, '亞洲菜', NULL, '隆香茶室.png');
+INSERT INTO Restaurants VALUES (NULL, '早點・來-海大店', '202基隆市中正區祥豐街847號', '0224620845', '早午餐', NULL, '早點來.jpg');
