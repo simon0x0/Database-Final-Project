@@ -20,8 +20,7 @@ if (!$restaurant) {
     die("找不到該餐廳資料");
 }
 
-// 2. 查詢該餐廳的所有評論 (JOIN Users 取得使用者名稱) [cite: 52-63]
-// 依照時間倒序排列 (最新的在上面)
+// 2. 查詢該餐廳的所有評論
 $sql_reviews = "SELECT rv.*, u.username 
                 FROM Reviews rv 
                 JOIN Users u ON rv.user_id = u.user_id 
@@ -31,7 +30,7 @@ $stmt_rv = $db->prepare($sql_reviews);
 $stmt_rv->execute([$r_id]);
 $reviews = $stmt_rv->fetchAll();
 
-// 計算平均分數 (也可以直接用 SQL 算，這裡用 PHP 簡單處理)
+// 計算平均分數
 $avg_rating = 0;
 if (count($reviews) > 0) {
     $sum = 0;
@@ -46,19 +45,38 @@ if (count($reviews) > 0) {
     <meta charset="UTF-8">
     <title><?php echo htmlspecialchars($restaurant['name']); ?> - 詳細資料</title>
     <style>
-        /* 沿用你的 CSS 風格 */
         body { font-family: 'Microsoft JhengHei', sans-serif; background-color: #f4f4f4; margin: 0; }
         .navbar { background: linear-gradient(135deg, #005c97, #363795); padding: 15px; color: white; display: flex; justify-content: space-between; }
         .navbar a { color: white; text-decoration: none; margin-left: 15px; font-weight: bold; }
         .container { max-width: 800px; margin: 30px auto; padding: 30px; background: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         
-        /* 餐廳資訊區塊 */
         .rest-header { border-bottom: 2px solid #eee; padding-bottom: 20px; margin-bottom: 20px; }
         .rest-title { font-size: 2em; color: #333; font-weight: bold; margin-bottom: 10px; }
-        .rest-meta { color: #666; margin-bottom: 5px; }
+        .rest-meta { color: #666; margin-bottom: 8px; font-size: 1.1em; }
         .rating-big { font-size: 1.5em; color: #f39c12; font-weight: bold; }
 
-        /* 評論區塊 */
+        /* 菜單圖片樣式 */
+        .menu-section {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fafafa;
+            border-radius: 8px;
+            border: 1px dashed #ccc;
+        }
+        .menu-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .menu-img {
+            max-width: 100%; /* 限制寬度不超過容器 */
+            height: auto;    /* 高度自動調整，保持比例 */
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: block;  /* 讓圖片獨佔一行 */
+        }
+
         .review-section { margin-top: 30px; }
         .review-item { border-bottom: 1px solid #f0f0f0; padding: 15px 0; }
         .review-user { font-weight: bold; color: #005c97; }
@@ -66,8 +84,7 @@ if (count($reviews) > 0) {
         .review-content { margin-top: 8px; line-height: 1.6; color: #444; }
         .star-rating { color: #f39c12; }
 
-        /* 按鈕樣式 */
-        .btn-action { display: inline-block; padding: 10px 20px; background: #005c97; color: white; text-decoration: none; border-radius: 5px; margin-top: 10px; }
+        .btn-action { display: inline-block; padding: 10px 20px; background: #005c97; color: white; text-decoration: none; border-radius: 5px; margin-top: 15px; }
         .btn-action:hover { background: #004a7c; }
     </style>
 </head>
@@ -89,9 +106,19 @@ if (count($reviews) > 0) {
 <div class="container">
     <div class="rest-header">
         <div class="rest-title"><?php echo htmlspecialchars($restaurant['name']); ?></div>
+        
         <div class="rest-meta">類別：<?php echo htmlspecialchars($restaurant['category']); ?></div>
         <div class="rest-meta">電話：<?php echo htmlspecialchars($restaurant['phone']); ?></div>
         <div class="rest-meta">地址：<?php echo htmlspecialchars($restaurant['address']); ?></div>
+
+        <?php if (!empty($restaurant['menu_path'])): ?>
+            <div class="menu-section">
+                <span class="menu-title">菜單：</span>
+                <img src="menu_image/<?php echo htmlspecialchars($restaurant['menu_path']); ?>" 
+                     alt="<?php echo htmlspecialchars($restaurant['name']); ?> 菜單" 
+                     class="menu-img">
+            </div>
+        <?php endif; ?>
         <br>
         <div>
             <span class="rating-big"><?php echo number_format($avg_rating, 1); ?> ★</span>
