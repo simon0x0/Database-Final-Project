@@ -2,7 +2,6 @@
 session_start();
 require 'db.php';
 
-// 查詢熱門推薦餐廳 (計算平均評分並排序) [cite: 13]
 $sql = "SELECT r.*, AVG(rv.rating) as avg_rating, COUNT(rv.review_id) as review_count 
         FROM Restaurants r 
         LEFT JOIN Reviews rv ON r.restaurant_id = rv.restaurant_id 
