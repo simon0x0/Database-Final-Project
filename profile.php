@@ -2,13 +2,11 @@
 session_start();
 require 'db.php';
 
-// 檢查是否登入
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
 
-// 獲取最新使用者資料
 $stmt = $db->prepare("SELECT * FROM Users WHERE user_id = ?");
 $stmt->execute([$_SESSION['user_id']]);
 $user = $stmt->fetch();
