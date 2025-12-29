@@ -4,7 +4,6 @@ require 'db.php';
 
 $search = $_GET['search'] ?? '';
 
-// 根據搜尋條件查詢 [cite: 13]
 if ($search) {
     $sql = "SELECT r.*, AVG(rv.rating) as avg_rating, COUNT(rv.review_id) as review_count 
             FROM Restaurants r 
@@ -29,7 +28,6 @@ $restaurants = $stmt->fetchAll();
     <meta charset="UTF-8">
     <title>餐廳列表 - 海大餐飲評分系統</title>
     <style>
-        /* 簡單沿用 index 的樣式 */
         body { font-family: 'Microsoft JhengHei', sans-serif; background-color: #f4f4f4; margin: 0; }
         .navbar { background: linear-gradient(135deg, #005c97, #363795); padding: 15px; color: white; display: flex; justify-content: space-between; }
         .navbar a { color: white; text-decoration: none; margin-left: 15px; font-weight: bold; }
