@@ -35,3 +35,10 @@ INSERT INTO Restaurants VALUES (NULL, '得正#基隆海大計劃', '202基隆市
 INSERT INTO Restaurants VALUES (NULL, '飯丸屋-基隆海大店', '202基隆市中正區北寧路17號1樓', '0979335851', '速食', NULL, '飯丸屋.jpg');
 INSERT INTO Restaurants VALUES (NULL, '隆香茶室 LOONG HEONG (公休請留意IG)', '202基隆市中正區北寧路3號', NULL, '亞洲菜', NULL, '隆香茶室.png');
 INSERT INTO Restaurants VALUES (NULL, '早點・來-海大店', '202基隆市中正區祥豐街847號', '0224620845', '早午餐', NULL, '早點來.jpg');
+INSERT INTO Restaurants VALUES (NULL, '鵝鮮生&海鮮粥', '202基隆市中正區中正路603號', '0224631109', '餐廳', NULL, '鵝鮮生&海鮮粥.jpg');
+INSERT INTO Restaurants VALUES (NULL, '初拉麵製作所海大店', '202基隆市中正區中正路589號', '0972953315', '拉麵', NULL, '拉麵製作所海大店.jpg');
+INSERT INTO Restaurants VALUES (NULL, '陳家麵店', '202基隆市中正區正濱路2號', '0983785035', '餐廳', NULL, '陳家麵店.jpg');
+INSERT INTO Restaurants VALUES (NULL, '來呷漁夫麵 粥', '202基隆市中正區中正路583號', '0224620200', '餐廳', NULL, '來呷漁夫麵 粥.jpg');
+INSERT INTO Restaurants VALUES (NULL, '正宗永和豆漿', '202基隆市中正區中正路746-1號1樓', '0224637089', '餐廳', NULL, '正宗永和豆漿.jpg');
+INSERT INTO Restaurants VALUES (NULL, '雅廬韓式料理', '202基隆市中正區北寧路154巷23號', '0224622564', '韓式料理', NULL, '雅廬韓式料理.jpg');
+INSERT INTO Restaurants VALUES (NULL, '望海巷石頭火鍋二館', '202基隆市中正區北寧路242-6號', '0224960000', '火鍋', NULL, '望海巷石頭火鍋二館.jpg');
